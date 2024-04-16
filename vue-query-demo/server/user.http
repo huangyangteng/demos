@@ -1,0 +1,41 @@
+### Add User
+POST http://localhost:10000/user/add
+Content-Type: application/json
+
+{
+    "name": "John",
+    "password": "password123",
+    "role": "admin"
+}
+
+### Query All Users
+GET http://localhost:10000/user/all
+
+
+### Query Users
+GET http://localhost:10000/user/query?name=&pageSize=2&page=1
+
+
+### Query User Dtail
+GET http://localhost:10000/user/detail/1
+
+### Update User
+PUT http://localhost:10000/user/update
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "John Doe",
+    "password": "newpassword",
+    "role": "user"
+}
+
+### Delete User
+POST http://localhost:10000/user/delete
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+
