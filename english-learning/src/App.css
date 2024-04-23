@@ -1,0 +1,153 @@
+.wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    padding-top: 1em;
+    gap: 2em;
+}
+.left {
+    width: 640px;
+}
+.right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+}
+.example-video {
+    border-radius: 10px;
+}
+.marks {
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: repeat(6, 2em);
+    grid-template-columns: repeat(13, 2em);
+    gap: 0.2em;
+    justify-content: start; /* 将网格元素水平靠左 */
+    align-items: center; /* 垂直居中 */
+    padding-bottom: 2em;
+}
+.title-1 {
+    writing-mode: vertical-rl;
+    letter-spacing: 5px;
+}
+.title-1:nth-child(1) {
+    grid-row: 1/4;
+    grid-column: 1/2;
+}
+.title-1:nth-child(2) {
+    grid-row: 4/7;
+    grid-column: 1/2;
+}
+.marks .title-2:nth-of-type(1) {
+    color: red;
+}
+
+.marks > div:nth-child(3) {
+    grid-row: 1/2;
+    grid-column: 2/4;
+}
+.marks > div:nth-child(4) {
+    grid-row: 2/3;
+    grid-column: 2/4;
+}
+.marks > div:nth-child(5) {
+    grid-row: 3/4;
+    grid-column: 2/4;
+}
+.marks > div:nth-child(6) {
+    grid-row: 4/5;
+    grid-column: 2/4;
+}
+.marks > div:nth-child(7) {
+    grid-row: 5/7;
+    grid-column: 2/4;
+}
+.text {
+    cursor: pointer;
+}
+.text-u {
+    grid-column: 8/14;
+}
+.text-ʊ {
+    grid-column: 10/14;
+}
+.text-tʃ {
+    grid-column: 12/14;
+}
+.text-dʒ {
+    grid-column: 12/14;
+}
+.record-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.description {
+    overflow-y: auto;
+    flex: 1;
+    border-radius: 10px;
+    box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
+}
+
+.pdf-wrapper {
+    max-height: 800px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 页码 */
+.page-controls {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    background: white;
+    /* opacity: 0; */
+    transform: translate(-50%);
+    transition: opacity ease-in-out 0.2s;
+    box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
+    border-radius: 4px;
+    z-index: 2;
+    color: #010101;
+}
+.page-controls button {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 0;
+    font: inherit;
+    font-size: 0.8em;
+    color: #010101;
+}
+.page-controls span {
+    font: inherit;
+    font-size: 0.8em;
+    padding: 0 0.5em;
+}
+.page-controls button:enabled:hover {
+    cursor: pointer;
+}
+.page-controls button:disabled {
+    opacity: 0.5;
+}
+.page-controls button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.page-controls button:enabled:hover,
+.page-controls button:enabled:focus {
+    background-color: #e6e6e6;
+    outline: 0;
+}
+
+.page-controls button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.page-controls button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
