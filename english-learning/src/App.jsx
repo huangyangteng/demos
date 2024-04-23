@@ -17,11 +17,9 @@ function App() {
         videoDom.current.play()
         setEndTime(endMap.get(text))
         let page=pdfMap.get(text)
-        console.log("playMark -> page", page)
         if(page){
             pdfRef.current.toPage(page-4)
         }
-        console.log("playMark -> page", page)
     }
     const onTimeUpdate = () => {
         if (endTime && videoDom.current.currentTime >= endTime) {

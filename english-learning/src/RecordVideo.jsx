@@ -3,7 +3,6 @@ import Webcam from 'react-webcam'
 
 export default function RecordVideo() {
     const [open, setOpen] = useState(false)
-    console.log(open)
     const clickOpen = (flag) => {
         setOpen(flag)
     }
