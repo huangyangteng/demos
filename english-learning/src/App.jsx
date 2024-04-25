@@ -62,7 +62,10 @@ function App() {
                         </div>
                     ))}
                 </div>
-                <div className="description">
+                {/* <div className="word-mark">
+                    <input/>
+                </div> */}
+                <div className='info' >
                     <RenderPdf ref={pdfRef} />
                 </div>
             </div>

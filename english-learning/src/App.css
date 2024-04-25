@@ -18,7 +18,37 @@
 .example-video {
     border-radius: 10px;
 }
+/* 左下 自定义摄像头框框 */
+.record-video {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 640px;
+    height: 360px;
+    border: 1px dotted #fafafa;
+}
+
+.record-video span{
+    position: absolute;
+    top:.2em;
+    right: .5em;
+    cursor: pointer;
+}
+.record-video b{
+    position: absolute;
+    bottom:.2em;
+    right: .5em;
+    cursor: pointer;
+}
+/* 右上 音标 */
 .marks {
+    padding-top: 2em;
     font-size: 18px;
     display: grid;
     grid-template-rows: repeat(6, 2em);
@@ -26,7 +56,6 @@
     gap: 0.2em;
     justify-content: start; /* 将网格元素水平靠左 */
     align-items: center; /* 垂直居中 */
-    padding-bottom: 2em;
 }
 .title-1 {
     writing-mode: vertical-rl;
@@ -79,20 +108,24 @@
 .text-dʒ {
     grid-column: 12/14;
 }
-.record-video {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+
+.word-mark{
+
 }
-.description {
-    overflow-y: auto;
+/* 右下pdf */
+.info {
     flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+.pdf-wrapper {
+    height: 100%;
+    overflow-y: auto;
     border-radius: 10px;
     box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
 }
 
-.pdf-wrapper {
+.pdf-content {
     max-height: 800px;
     overflow: hidden;
     position: relative;
@@ -109,7 +142,7 @@
     transition: opacity ease-in-out 0.2s;
     box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
     border-radius: 4px;
-    z-index: 2;
+    z-index: 20;
     color: #010101;
 }
 .page-controls button {

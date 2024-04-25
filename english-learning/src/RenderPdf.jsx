@@ -29,26 +29,29 @@ function RenderPdf(props, ref) {
         toPage
     }))
     return (
-        <div className="pdf-wrapper">
-            <Document
-                file="https://leexiao.site/file/en.pdf"
-                onLoadSuccess={onDocumentLoadSuccess}>
-                <Page pageNumber={pageNumber} />
-                <div className="page-controls">
-                    <button disabled={pageNumber - 1 <= 0} onClick={prev}>
-                        ‹
-                    </button>
-                    <span>
-                        {pageNumber} of {totalPages}
-                    </span>
-                    <button
-                        disabled={pageNumber + 1 >= totalPages}
-                        onClick={next}>
-                        ›
-                    </button>
+        <>
+            <div className="page-controls">
+                <button disabled={pageNumber - 1 <= 0} onClick={prev}>
+                    ‹
+                </button>
+                <span>
+                    {pageNumber} of {totalPages}
+                </span>
+                <button disabled={pageNumber + 1 >= totalPages} onClick={next}>
+                    ›
+                </button>
+            </div>
+
+            <div className="pdf-wrapper">
+                <div className="pdf-content">
+                    <Document
+                        file="https://leexiao.site/file/en.pdf"
+                        onLoadSuccess={onDocumentLoadSuccess}>
+                        <Page pageNumber={pageNumber} />
+                    </Document>
                 </div>
-            </Document>
-        </div>
+            </div>
+        </>
     )
 }
 
