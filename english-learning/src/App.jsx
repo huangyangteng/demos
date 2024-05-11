@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react'
 import './App.css'
-import { list, endMap,pdfMap } from './data'
+import { list, endMap, pdfMap } from './data'
 import RecordVideo from './RecordVideo'
 import RenderPdf from './RenderPdf'
+import Recommend from './Recommend'
 function App() {
     const videoDom = useRef(null)
     const [endTime, setEndTime] = useState(null)
     const [curMark, setCurMark] = useState(null)
-    const pdfRef=useRef()
+    const pdfRef = useRef()
     const playMark = ({ text, start }) => {
         setCurMark({
             text,
@@ -16,9 +17,9 @@ function App() {
         videoDom.current.currentTime = start
         videoDom.current.play()
         setEndTime(endMap.get(text))
-        let page=pdfMap.get(text)
-        if(page){
-            pdfRef.current.toPage(page-4)
+        let page = pdfMap.get(text)
+        if (page) {
+            pdfRef.current.toPage(page - 4)
         }
     }
     const onTimeUpdate = () => {
@@ -32,42 +33,38 @@ function App() {
     }
     return (
         <div className="wrapper">
-            <div className="left">
-                <video
-                    className="example-video"
-                    ref={videoDom}
-                    onTimeUpdate={onTimeUpdate}
-                    controls={false}
-                    width={640}
-                    height={360}
-                    src="https://leexiao.site/file/en.mp4"></video>
+            <video
+                className="example-video"
+                ref={videoDom}
+                onTimeUpdate={onTimeUpdate}
+                controls={false}
+                width={640}
+                height={360}
+                src="https://leexiao.site/file/en.mp4"></video>
+            <div className="record-video-wrapper">
                 <RecordVideo />
+                <Recommend />
             </div>
-            <div className="right">
-                <div className="marks">
-                    <div className="title-1">元音</div>
-                    <div className="title-1">辅音</div>
-                    <div className="title-2">长元音</div>
-                    <div className="title-2">短元音</div>
-                    <div className="title-2">双元音</div>
-                    <div className="title-2">清辅音</div>
-                    <div className="title-2">浊辅音</div>
+            <div className="marks">
+                <div className="title-1">元音</div>
+                <div className="title-1">辅音</div>
+                <div className="title-2">长元音</div>
+                <div className="title-2">短元音</div>
+                <div className="title-2">双元音</div>
+                <div className="title-2">清辅音</div>
+                <div className="title-2">浊辅音</div>
 
-                    {list.map((item, index) => (
-                        <div
-                            onClick={() => playMark(item, index)}
-                            className={'text text-' + item.text}
-                            key={item.text}>
-                            {item.text}
-                        </div>
-                    ))}
-                </div>
-                {/* <div className="word-mark">
-                    <input/>
-                </div> */}
-                <div className='info' >
-                    <RenderPdf ref={pdfRef} />
-                </div>
+                {list.map((item, index) => (
+                    <div
+                        onClick={() => playMark(item, index)}
+                        className={'text text-' + item.text}
+                        key={item.text}>
+                        {item.text}
+                    </div>
+                ))}
+            </div>
+            <div className="info">
+                <RenderPdf ref={pdfRef} />
             </div>
         </div>
     )

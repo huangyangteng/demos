@@ -1,26 +1,29 @@
 .wrapper {
-    display: flex;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
     padding-top: 1em;
-    gap: 2em;
+    display: grid;
+    gap: 1em;
+    grid-template-rows: 360px 1fr;
+    grid-template-columns: 640px 640px;
+    grid-template-areas: "example-video marks"
+                         "record-video pdf";
+    justify-content:center;
 }
-.left {
-    width: 640px;
-}
-.right {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 1em;
-}
+
 .example-video {
+    grid-area: example-video;
     border-radius: 10px;
+}
+.record-video-wrapper{
+    grid-area: record-video;
+}
+.recommend-wrapper{
+    padding-top: 0.5em;
 }
 /* 左下 自定义摄像头框框 */
 .record-video {
-    margin-top: 2em;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,6 +51,7 @@
 }
 /* 右上 音标 */
 .marks {
+    grid-area: marks;
     padding-top: 2em;
     font-size: 18px;
     display: grid;
@@ -114,15 +118,16 @@
 }
 /* 右下pdf */
 .info {
+    grid-area: pdf;
     flex: 1;
     overflow: hidden;
     position: relative;
+    padding-bottom: 2em;
 }
 .pdf-wrapper {
     height: 100%;
     overflow-y: auto;
     border-radius: 10px;
-    box-shadow: 0 30px 40px 0 rgba(16, 36, 94, 0.2);
 }
 
 .pdf-content {
