@@ -10,10 +10,19 @@
                          "record-video pdf";
     justify-content:center;
 }
-
+@media (max-width: 1281px) {
+    .wrapper{
+        grid-template-columns: 600px 640px;
+        grid-template-rows: 338px 1fr;
+    }
+}
+/* 左上 */
 .example-video {
     grid-area: example-video;
     border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 .record-video-wrapper{
     grid-area: record-video;
@@ -23,7 +32,6 @@
 }
 /* 左下 自定义摄像头框框 */
 .record-video {
-   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,8 +40,8 @@
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    width: 640px;
-    height: 360px;
+    width: 100%;
+    height: 100%;
     border: 1px dotted #fafafa;
 }
 

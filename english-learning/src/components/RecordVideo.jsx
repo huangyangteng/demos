@@ -7,7 +7,7 @@ const videoConstraints = {
   };
 export default function RecordVideo() {
     const [open, setOpen] = useState(false)
-    const [muted,setMuted]=useState(true)
+    const [muted,setMuted]=useState(false)
     const clickOpen = (flag) => {
         setOpen(flag)
     }
@@ -15,7 +15,7 @@ export default function RecordVideo() {
         <div className='record-video'>
             {open ? (
                 <>
-                <Webcam audio={!muted} width={640} height={360} videoConstraints={videoConstraints}></Webcam>
+                <Webcam audio={!muted} width={640} height={320} videoConstraints={videoConstraints}></Webcam>
                 <span onClick={() => clickOpen(false)}>❌</span>
                 <b onClick={() => setMuted(!muted)}>{muted?'🔇':'🔊'}</b>
                 </>

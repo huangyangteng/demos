@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import './App.css'
 import { list, endMap, pdfMap } from './data'
-import RecordVideo from './RecordVideo'
-import RenderPdf from './RenderPdf'
-import Recommend from './Recommend'
+import RecordVideo from './components/RecordVideo'
+import RenderPdf from './components/RenderPdf'
+import Recommend from './components/Recommend'
 function App() {
     const videoDom = useRef(null)
     const [endTime, setEndTime] = useState(null)
@@ -38,8 +38,7 @@ function App() {
                 ref={videoDom}
                 onTimeUpdate={onTimeUpdate}
                 controls={false}
-                width={640}
-                height={360}
+                
                 src="https://leexiao.site/file/en.mp4"></video>
             <div className="record-video-wrapper">
                 <RecordVideo />
