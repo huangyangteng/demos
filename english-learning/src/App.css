@@ -1,17 +1,19 @@
 .wrapper {
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
     padding-top: 1em;
     display: grid;
     gap: 1em;
     grid-template-rows: 360px 1fr;
     grid-template-columns: 640px 640px;
-    grid-template-areas: "example-video marks"
-                         "record-video pdf";
-    justify-content:center;
+    grid-template-areas:
+        'example-video marks'
+        'record-video pdf';
+    justify-content: center;
 }
 @media (max-width: 1281px) {
-    .wrapper{
+    .wrapper {
         grid-template-columns: 600px 640px;
         grid-template-rows: 338px 1fr;
     }
@@ -24,10 +26,10 @@
     height: 100%;
     overflow: hidden;
 }
-.record-video-wrapper{
+.record-video-wrapper {
     grid-area: record-video;
 }
-.recommend-wrapper{
+.recommend-wrapper {
     padding-top: 0.5em;
 }
 /* 左下 自定义摄像头框框 */
@@ -45,22 +47,24 @@
     border: 1px dotted #fafafa;
 }
 
-.record-video span{
+.record-video span {
     position: absolute;
-    top:.2em;
-    right: .5em;
+    top: 0.2em;
+    right: 0.5em;
     cursor: pointer;
 }
-.record-video b{
+.record-video b {
     position: absolute;
-    bottom:.2em;
-    right: .5em;
+    bottom: 0.2em;
+    right: 0.5em;
     cursor: pointer;
 }
 /* 右上 音标 */
-.marks {
+.marks-wrapper {
     grid-area: marks;
-    padding-top: 2em;
+    padding-top: 0.5em;
+}
+.marks {
     font-size: 18px;
     display: grid;
     grid-template-rows: repeat(6, 2em);
@@ -121,8 +125,7 @@
     grid-column: 12/14;
 }
 
-.word-mark{
-
+.word-mark {
 }
 /* 右下pdf */
 .info {
@@ -196,4 +199,21 @@
 .page-controls button:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+/* query word */
+
+.query-word {
+    padding-top: 0.5em;
+    .word-content {
+        padding-top: 0.5em;
+        .word-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            span{
+                cursor: pointer;
+            }
+        }
+    }
 }

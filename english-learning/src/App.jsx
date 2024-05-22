@@ -4,6 +4,7 @@ import { list, endMap, pdfMap } from './data'
 import RecordVideo from './components/RecordVideo'
 import RenderPdf from './components/RenderPdf'
 import Recommend from './components/Recommend'
+import QueryWord from './components/QueryWord'
 function App() {
     const videoDom = useRef(null)
     const [endTime, setEndTime] = useState(null)
@@ -38,30 +39,33 @@ function App() {
                 ref={videoDom}
                 onTimeUpdate={onTimeUpdate}
                 controls={false}
-                
                 src="https://leexiao.site/file/en.mp4"></video>
             <div className="record-video-wrapper">
                 <RecordVideo />
                 <Recommend />
             </div>
-            <div className="marks">
-                <div className="title-1">元音</div>
-                <div className="title-1">辅音</div>
-                <div className="title-2">长元音</div>
-                <div className="title-2">短元音</div>
-                <div className="title-2">双元音</div>
-                <div className="title-2">清辅音</div>
-                <div className="title-2">浊辅音</div>
+            <div className="marks-wrapper">
+                <div className="marks">
+                    <div className="title-1">元音</div>
+                    <div className="title-1">辅音</div>
+                    <div className="title-2">长元音</div>
+                    <div className="title-2">短元音</div>
+                    <div className="title-2">双元音</div>
+                    <div className="title-2">清辅音</div>
+                    <div className="title-2">浊辅音</div>
 
-                {list.map((item, index) => (
-                    <div
-                        onClick={() => playMark(item, index)}
-                        className={'text text-' + item.text}
-                        key={item.text}>
-                        {item.text}
-                    </div>
-                ))}
+                    {list.map((item, index) => (
+                        <div
+                            onClick={() => playMark(item, index)}
+                            className={'text text-' + item.text}
+                            key={item.text}>
+                            {item.text}
+                        </div>
+                    ))}
+                </div>
+                <QueryWord />
             </div>
+
             <div className="info">
                 <RenderPdf ref={pdfRef} />
             </div>

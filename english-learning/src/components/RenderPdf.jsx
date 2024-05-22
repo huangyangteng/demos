@@ -7,6 +7,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.js',
     import.meta.url
 ).toString()
+const PDF_LINK = 'https://leexiao.site/file/en.pdf'
 function RenderPdf(props, ref) {
     const [totalPages, setTotalPages] = useState()
     const [pageNumber, setPageNumber] = useState(1)
@@ -45,7 +46,7 @@ function RenderPdf(props, ref) {
             <div className="pdf-wrapper">
                 <div className="pdf-content">
                     <Document
-                        file="https://leexiao.site/file/en.pdf"
+                        file={PDF_LINK}
                         onLoadSuccess={onDocumentLoadSuccess}>
                         <Page pageNumber={pageNumber} />
                     </Document>
