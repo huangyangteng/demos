@@ -5,4 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base:'./',
   plugins: [react()],
+  test:{
+    globals:true  //支持全局导入
+  },
 })
