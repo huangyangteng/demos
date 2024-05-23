@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { useCallback, useState } from 'react'
-import { useSearchParam } from 'react-use'
+import { useState } from 'react'
 
 axios.defaults.baseURL = 'https://leexiao.site/gk-api'
 // 预加载音频文件
@@ -17,19 +16,16 @@ function preloadAudio(audios) {
 }
 
 export default function QueryWord() {
-    const searchKey = useSearchParam('key') || ''
-    const handleSearch = useCallback((e) => {
-        // 用户输入时，直接改变url
-        window.history.pushState(
-            {},
-            '',
-            `${window.location.pathname}?key=${e.target.value}`
-        )
-    }, [])
+    const [searchWord, setSearchWord] = useState('')
+
+    const handleSearch = (e) => {
+        setSearchWord(e.target.value)
+    }
     const [soundMark, setSoundMark] = useState({ uk: null, us: null })
     const [meaning, setMeaning] = useState('')
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(false)
+    console.log(error)
     const fetchWord = (e) => {
         if (e.key === 'Enter') {
             setLoading(true)
@@ -37,7 +33,7 @@ export default function QueryWord() {
             setMeaning('')
             setSoundMark({ uk: null, us: null })
             axios
-                .get('/util/translate?word=' + searchKey)
+                .get('/util/translate?word=' + searchWord)
                 .then((res) => {
                     if (res.data.code === 2000) {
                         const { soundmark, meaning } = res.data.data
@@ -55,10 +51,10 @@ export default function QueryWord() {
                     setLoading(false)
                 })
                 .catch((error) => {
-                    setError(error)
+                    console.log(error.toString())
+                    // setError(error)
                     setLoading(false)
                 })
-           
         }
     }
 
@@ -71,13 +67,13 @@ export default function QueryWord() {
     return (
         <div className="query-word">
             <input
-                value={searchKey}
+                value={searchWord}
                 placeholder="input word"
                 onChange={handleSearch}
                 onKeyUp={fetchWord}
             />
             {loading && <div>loading...</div>}
-            {error && <div>{error}</div>}
+            {!!error && <div>{error}</div>}
 
             <div className="word-content">
                 <div>{meaning}</div>
